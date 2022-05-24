@@ -1,2 +1,6 @@
 # nye-felhasznalokezelo
-Nye Progkorny órára beadnadó
+Nye Progrkörnyezetek órára beadnadó
+Java
+Maven
+Spring
+Thymeleaf
