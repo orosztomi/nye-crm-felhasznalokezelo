@@ -1,0 +1,30 @@
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE EMPLOYEES (ID BIGINT NOT NULL AUTO_INCREMENT, EMAIL VARCHAR(255), FIRST_NAME VARCHAR(255), LAST_NAME VARCHAR(255), PRIMARY KEY (ID)) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+create table employees (id bigint not null auto_increment, email varchar(255), first_name varchar(255), last_name varchar(255), primary key (id)) engine=InnoDB [42001-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE ROLE (ID BIGINT NOT NULL AUTO_INCREMENT, NAME VARCHAR(255), PRIMARY KEY (ID)) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+create table role (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB [42001-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USER (ID BIGINT NOT NULL AUTO_INCREMENT, EMAIL VARCHAR(255), FIRST_NAME VARCHAR(255), LAST_NAME VARCHAR(255), PASSWORD VARCHAR(255), PRIMARY KEY (ID)) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+create table user (id bigint not null auto_increment, email varchar(255), first_name varchar(255), last_name varchar(255), password varchar(255), primary key (id)) engine=InnoDB [42001-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USERS_ROLES (USER_ID BIGINT NOT NULL, ROLE_ID BIGINT NOT NULL) ENGINE=[*]INNODB"; expected "identifier"; SQL statement:
+create table users_roles (user_id bigint not null, role_id bigint not null) engine=InnoDB [42001-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+alter table user drop index UKob8kqyqqgmefl0aco34akdtpe [42102-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER" not found; SQL statement:
+alter table user add constraint UKob8kqyqqgmefl0aco34akdtpe unique (email) [42102-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found; SQL statement:
+alter table users_roles add constraint FKt4v0rrweyk393bdgt107vdx0x foreign key (role_id) references role (id) [42102-200]
+2022-05-24 17:44:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS_ROLES" not found; SQL statement:
+alter table users_roles add constraint FKgd3iendaoyh04b95ykqise6qh foreign key (user_id) references user (id) [42102-200]
+2022-05-24 17:44:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EMPLOYEES" not found; SQL statement:
+select employee0_.id as id1_0_, employee0_.email as email2_0_, employee0_.first_name as first_na3_0_, employee0_.last_name as last_nam4_0_ from employees employee0_ order by employee0_.first_name asc limit ? [42102-200]
+2022-05-24 17:44:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EMPLOYEES" not found; SQL statement:
+select employee0_.id as id1_0_, employee0_.email as email2_0_, employee0_.first_name as first_na3_0_, employee0_.last_name as last_nam4_0_ from employees employee0_ order by employee0_.first_name asc limit ? [42102-200]

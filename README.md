@@ -1,2 +1,2 @@
-# nye-crm-felhasznalokezelo
-Nye Progkorny
+# nye-felhasznalokezelo
+Nye Progkorny órára beadnadó
