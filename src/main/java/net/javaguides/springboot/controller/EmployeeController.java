@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import net.javaguides.springboot.model.Employee;
 import net.javaguides.springboot.service.EmployeeService;
 
@@ -21,11 +20,12 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-
 	// display list of employees
 	@GetMapping("/")
+	
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "firstName", "asc", model);		
+		
 	}
 	
 	@GetMapping("/showNewEmployeeForm")
@@ -33,6 +33,7 @@ public class EmployeeController {
 		// create model attribute to bind form data
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
+		
 		return "new_employee";
 	}
 	
@@ -82,6 +83,7 @@ public class EmployeeController {
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 		
 		model.addAttribute("listEmployees", listEmployees);
+	
 		return "index";
 	}
 	
