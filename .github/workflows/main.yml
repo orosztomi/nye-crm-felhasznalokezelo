@@ -10,7 +10,7 @@ on:
 env:
   DOCKER_REGISTRY: ghcr.io
   DOCKER_IMAGE_NAME: ${{ github.repository }}
-  HEROKU_APP_NAME: 'nye-progkor-warehouse'
+  HEROKU_APP_NAME: 'nye-crm'
 
 jobs:
   build:
@@ -31,15 +31,15 @@ jobs:
     - name: Build and publish with Maven
       run: |
         # Versioning setup
-        version_prefix=`mvn help:evaluate -Dexpression=project.version --quiet -DforceStdout --file warehouse/pom.xml | awk -F. '{print $1"."$2}'`
+        version_prefix=`mvn help:evaluate -Dexpression=project.version --quiet -DforceStdout --file nye-crm-felhasznalokezelo/pom.xml | awk -F. '{print $1"."$2}'`
         version="$version_prefix.${{github.run_number}}"
         echo "Setting artifact version to $version"
         # Push version to env
         echo "ARTIFACT_VERSION=$version" >> $GITHUB_ENV
         # Overwrite local artifact version
-        mvn -B versions:set -DnewVersion="$version" --file warehouse/pom.xml
-        mvn -B deploy --file warehouse/pom.xml
-        cp "warehouse/web/target/web-${version}.jar" "warehouse/web/target/warehouse.jar"
+        mvn -B versions:set -DnewVersion="$version" --file nye-crm-felhasznalokezelo/pom.xml
+        mvn -B deploy --file nye-crm-felhasznalokezelo/pom.xml
+        cp "nye-crm-felhasznalokezelo/web/target/web-${version}.jar" "nye-crm-felhasznalokezelo/web/target/nye-crm-felhasznalokezelo.jar"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Log in to the Container registry
@@ -58,7 +58,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
-        context: ./warehouse
+        context: ./nye-crm-felhasznalokezelo
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
