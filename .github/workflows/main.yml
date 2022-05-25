@@ -31,15 +31,15 @@ jobs:
     - name: Build and publish with Maven
       run: |
         # Versioning setup
-        version_prefix=`mvn help:evaluate -Dexpression=project.version --quiet -DforceStdout --file nye-crm-felhasznalokezelo/pom.xml | awk -F. '{print $1"."$2}'`
+        version_prefix=`mvn help:evaluate -Dexpression=project.version --quiet -DforceStdout --file /pom.xml | awk -F. '{print $1"."$2}'`
         version="$version_prefix.${{github.run_number}}"
         echo "Setting artifact version to $version"
         # Push version to env
         echo "ARTIFACT_VERSION=$version" >> $GITHUB_ENV
         # Overwrite local artifact version
-        mvn -B versions:set -DnewVersion="$version" --file nye-crm-felhasznalokezelo/pom.xml
-        mvn -B deploy --file nye-crm-felhasznalokezelo/pom.xml
-        cp "nye-crm-felhasznalokezelo/web/target/web-${version}.jar" "nye-crm-felhasznalokezelo/web/target/nye-crm-felhasznalokezelo.jar"
+        mvn -B versions:set -DnewVersion="$version" --file /pom.xml
+        mvn -B deploy --file /pom.xml
+        cp "/web/target/web-${version}.jar" "/web/target/.jar"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Log in to the Container registry
@@ -58,7 +58,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
-        context: ./nye-crm-felhasznalokezelo
+        context: ./
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
@@ -81,8 +81,8 @@ jobs:
         run: heroku container:login
       - name: Get image from packages, tag and push to Heroku
         run: |
-          docker pull ghcr.io/epam-nye-cooperation/epam-nye-progkor:${{ env.ARTIFACT_VERSION }}
-          docker tag ghcr.io/epam-nye-cooperation/epam-nye-progkor:${{ env.ARTIFACT_VERSION }} registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
+          docker pull ghcr.io/orosztomi/nye-crm-felhasznalokezelo:${{ env.ARTIFACT_VERSION }}
+          docker tag ghcr.io/orosztomi/nye-crm-felhasznalokezelo:${{ env.ARTIFACT_VERSION }} registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
           docker push registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
         env:
           ARTIFACT_VERSION: ${{ needs.build.outputs.artifactVersion }}
