@@ -1,4 +1,4 @@
-package nye.progkorny.springboot;
+package net.javaguides.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

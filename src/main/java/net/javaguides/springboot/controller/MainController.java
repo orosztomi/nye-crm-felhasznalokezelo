@@ -1,4 +1,4 @@
-package nye.progkorny.springboot.controller;
+package net.javaguides.springboot.controller;
 //package net.javaguides.springboot.controller;
 //
 //import org.springframework.stereotype.Controller;

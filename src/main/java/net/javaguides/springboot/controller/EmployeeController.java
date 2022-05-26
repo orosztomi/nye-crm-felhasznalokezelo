@@ -1,4 +1,4 @@
-package nye.progkorny.springboot.controller;
+package net.javaguides.springboot.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import nye.progkorny.springboot.model.Employee;
-import nye.progkorny.springboot.service.EmployeeService;
+import net.javaguides.springboot.model.Employee;
+import net.javaguides.springboot.service.EmployeeService;
 
 @Controller
 public class EmployeeController {
