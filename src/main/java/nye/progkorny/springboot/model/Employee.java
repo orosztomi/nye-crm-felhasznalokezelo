@@ -1,4 +1,4 @@
-package net.javaguides.springboot.model;
+package nye.progkorny.springboot.model;
 
 
 import javax.persistence.Entity;

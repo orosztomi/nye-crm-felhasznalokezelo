@@ -1,4 +1,4 @@
-package net.javaguides.springboot.config;
+package nye.progkorny.springboot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
